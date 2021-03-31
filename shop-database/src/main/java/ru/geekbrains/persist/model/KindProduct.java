@@ -18,9 +18,11 @@ public class KindProduct {
     private String name;
 
 
-    @OneToMany(mappedBy = "kindproduct")
+    @OneToMany(mappedBy = "kindProduct", cascade = CascadeType.ALL)
     private List<Product> products;
 
+    public KindProduct() {
+    }
 
     public KindProduct(String name) {
         this.name = name;
