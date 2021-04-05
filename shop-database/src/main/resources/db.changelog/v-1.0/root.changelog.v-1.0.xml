@@ -4,20 +4,17 @@
                    xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-    <preConditions>
-        <dbms type="postgresql"/>
-        <runningAs username="postgres"/>
-    </preConditions>
+    <include file="db.changelog-20210330-230516987.xml" relativeToChangelogFile="true"/>
+<!--    relativeToChangelogFile  относительный путь использовать для указанного файла-->
 
-    <changeSet id="0" author="dfox">
-        <tagDatabase tag="db_init"/>
+    <changeSet id="1617145524933-13" author="dfox">
+        <sqlFile dbms="postgresql"
+                 endDelimiter="\nGO"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 path="insert-default-users-roles.sql"/>
+        <rollback/>
     </changeSet>
-
-    <include file="v-1.0/root.changelog.v-1.0.xml" relativeToChangelogFile="true"/>
-
-    <changeSet id="100" author="dfox">
-        <tagDatabase tag="v-1.0"/>
-    </changeSet>
-
 
 </databaseChangeLog>
