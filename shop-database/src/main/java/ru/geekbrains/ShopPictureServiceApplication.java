@@ -1,4 +1,4 @@
-package ru.geekbrains.shoppictureservice;
+package ru.geekbrains;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ShopPictureServiceApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ShopPictureServiceApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ShopPictureServiceApplication.class, args);
+	}
 
 }
