@@ -1,6 +1,5 @@
 package ru.geekbrains.persist.model;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;

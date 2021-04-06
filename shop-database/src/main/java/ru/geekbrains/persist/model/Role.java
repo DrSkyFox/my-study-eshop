@@ -1,6 +1,6 @@
 package ru.geekbrains.persist.model;
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -16,7 +16,6 @@ public class Role implements Serializable {
 
     @Column(name = "name", unique = true, nullable = false)
     private String name;
-
 
     @ManyToMany(mappedBy = "roles")
     private List<User> users;
@@ -51,8 +50,6 @@ public class Role implements Serializable {
     public void setUsers(List<User> users) {
         this.users = users;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
