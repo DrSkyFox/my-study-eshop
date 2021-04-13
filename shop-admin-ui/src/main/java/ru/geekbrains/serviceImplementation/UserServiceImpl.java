@@ -43,6 +43,8 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+
+
     @Override
     public Optional<UserRepr> findById(Long id) {
         return userRepository.findById(id).map(UserRepr::new);
