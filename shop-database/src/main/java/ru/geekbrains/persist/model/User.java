@@ -1,4 +1,5 @@
 package ru.geekbrains.persist.model;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,15 +11,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false, length = 32)
+    @Column(length = 32, nullable = false)
     private String login;
 
-
-    @Column(nullable = false, length = 512)
+    @Column(length = 256, nullable = false)
     private String password;
-
-
-
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
@@ -26,16 +23,14 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-
-    public User(String username) {
-        this.login = username;
-    }
-
     public User() {
     }
 
-
-
+    public User(Long id, String login, String password) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
@@ -49,8 +44,8 @@ public class User {
         return login;
     }
 
-    public void setLogin(String username) {
-        this.login = username;
+    public void setLogin(String name) {
+        this.login = name;
     }
 
     public String getPassword() {
@@ -61,23 +56,11 @@ public class User {
         this.password = password;
     }
 
-
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", roles=" + roles +
-                '}';
     }
 }

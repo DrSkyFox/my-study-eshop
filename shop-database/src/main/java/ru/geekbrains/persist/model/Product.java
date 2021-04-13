@@ -1,43 +1,43 @@
 package ru.geekbrains.persist.model;
 
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "products")
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-
-    @Column(nullable = false, unique = true, length = 256)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(length = 2048)
-    private String description;
+    @Column(name = "price")
+    private BigDecimal price;
 
+    @ManyToOne(optional = false)
+    private Category category;
 
-    @Column(nullable = false)
-    private BigDecimal cost;
+    @ManyToOne(optional = false)
+    private Brand brand;
 
-
-    @ManyToOne
-    private KindProduct kindProduct;
-
-
-
-    public Product(String name, String description, BigDecimal cost) {
-        this.name = name;
-        this.description = description;
-        this.cost = cost;
-    }
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Picture> pictures;
 
     public Product() {
     }
 
+    public Product(String name, BigDecimal price, Category category, Brand brand) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.brand = brand;
+    }
 
     public Long getId() {
         return id;
@@ -55,28 +55,35 @@ public class Product {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public BigDecimal getCost() {
-        return cost;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCost(BigDecimal cost) {
-        this.cost = cost;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-
-    public KindProduct getKindProduct() {
-        return kindProduct;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setKindProduct(KindProduct kindProduct) {
-        this.kindProduct = kindProduct;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
     }
 }
