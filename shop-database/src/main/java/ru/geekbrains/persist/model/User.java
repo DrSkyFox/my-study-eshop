@@ -17,19 +17,26 @@ public class User {
     @Column(length = 256, nullable = false)
     private String password;
 
+    @Column(length = 64, nullable = false)
+    private String email;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    private Boolean valid;
+
     public User() {
+        this.valid =false;
     }
 
     public User(Long id, String login, String password) {
         this.id = id;
         this.login = login;
         this.password = password;
+        this.valid = false;
     }
 
     public Long getId() {
@@ -62,5 +69,21 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getValid() {
+        return valid;
+    }
+
+    public void setValid(Boolean valid) {
+        this.valid = valid;
     }
 }

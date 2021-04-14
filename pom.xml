@@ -39,6 +39,7 @@
         <module>shop-ui</module>
         <module>shop-database</module>
         <module>shop-picture-service</module>
+        <module>shop-mailsend</module>
     </modules>
 
 </project>

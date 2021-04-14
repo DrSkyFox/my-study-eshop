@@ -44,7 +44,7 @@
         <dependency>
             <groupId>ru.geekbrains</groupId>
             <artifactId>shop-picture-service</artifactId>
-            <version>1.0.0</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
