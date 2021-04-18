@@ -5,7 +5,7 @@ import liquibase.pro.packaged.I;
 import javax.persistence.*;
 
 @Entity
-public class MailSettings {
+public class MailSMTPSettings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,16 +28,24 @@ public class MailSettings {
     @Column(length = 64, nullable = false)
     private String mailAddressFrom;
 
-    public MailSettings(String SMTPServer, Integer port, Boolean useSSL, String loginSMTP, String password, String mailAddressFrom) {
+    @Column
+    private Boolean enabled;
+
+    @Column
+    private Boolean deleted;
+
+    public MailSMTPSettings(String SMTPServer, Integer port, Boolean useSSL, String loginSMTP, String password, String mailAddressFrom, Boolean enabled) {
         this.SMTPServer = SMTPServer;
         this.port = port;
         this.useSSL = useSSL;
         this.loginSMTP = loginSMTP;
         this.password = password;
         this.mailAddressFrom = mailAddressFrom;
+        this.enabled = false;
+        this.deleted = false;
     }
 
-    public MailSettings() {
+    public MailSMTPSettings() {
     }
 
     public Long getId() {
@@ -94,5 +102,21 @@ public class MailSettings {
 
     public void setMailAddressFrom(String mailAddressFrom) {
         this.mailAddressFrom = mailAddressFrom;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
     }
 }
