@@ -2,28 +2,26 @@ package ru.geekbrains.registration.listner;
 
 import java.util.UUID;
 
-import com.baeldung.service.IUserService;
-import com.baeldung.persistence.model.User;
-import com.baeldung.registration.OnRegistrationCompleteEvent;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 import ru.geekbrains.registration.OnRegistrationCompleteEvent;
 
 @Component
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
+
+
     @Autowired
     private IUserService service;
 
     @Autowired
     private MessageSource messages;
 
-    @Autowired
-    private JavaMailSender mailSender;
+
 
     @Autowired
     private Environment env;

@@ -4,21 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.persist.model.MailSMTPSettings;
 import ru.geekbrains.persist.model.User;
 import ru.geekbrains.persist.repo.MailSMTPSettingsRepository;
-import ru.geekbrains.service.MailSending;
+import ru.geekbrains.service.MailSendingService;
 
 import javax.annotation.PostConstruct;
 
 
 @Service
-public class MailSendingImplementation implements MailSending {
+public class MailSendingImplementation implements MailSendingService {
 
     @Autowired
     private JavaMailSender javaMailSender;
 
     private MailSMTPSettingsRepository smtpSettingsRepository;
+
+
+    public MailSendingImplementation(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
     @PostConstruct
     void init() {

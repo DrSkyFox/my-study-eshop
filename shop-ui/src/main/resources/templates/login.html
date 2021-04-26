@@ -14,62 +14,22 @@
         <!--================login Area =================-->
         <section class="login_area p_100">
             <div class="container">
-                <div class="login_inner">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="login_title">
-                                <h2>log in your account</h2>
-                                <p>Log in to your account to discovery all great features in this template.</p>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <form th:action="@{/login}" th:method="post">
+                            <div class="form-group">
+                                <label for="username">Login</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter login">
+                                <small th:if="${param.error != null}" class="form-text text-danger">Incorrect login or password</small>
+                                <small th:if="${param.logout != null}" class="form-text text-success">Logout successful</small>
                             </div>
-                            <form class="login_form row">
-                                <div class="col-lg-12 form-group">
-                                    <input class="form-control" type="text" placeholder="Name">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <input class="form-control" type="text" placeholder="User Name">
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <div class="creat_account">
-                                        <input type="checkbox" id="f-option" name="selector">
-                                        <label for="f-option">Keep me logged in</label>
-                                        <div class="check"></div>
-                                    </div>
-                                    <h4>Forgot your password ?</h4>
-                                </div>
-                                <div class="col-lg-12 form-group">
-                                    <button type="submit" value="submit" class="btn update_btn form-control">Login</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="login_title">
-                                <h2>create account</h2>
-                                <p>Follow the steps below to create email account enjoy the great mail.com emailing experience. Vivamus tempus risus vel felis condimentum, non vehicula est iaculis.</p>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                             </div>
-                            <form class="login_form row">
-                                <div class="col-lg-6 form-group">
-                                    <input class="form-control" type="text" placeholder="Name">
-                                </div>
-                                <div class="col-lg-6 form-group">
-                                    <input class="form-control" type="email" placeholder="Email">
-                                </div>
-                                <div class="col-lg-6 form-group">
-                                    <input class="form-control" type="text" placeholder="User Name">
-                                </div>
-                                <div class="col-lg-6 form-group">
-                                    <input class="form-control" type="text" placeholder="Phone">
-                                </div>
-                                <div class="col-lg-6 form-group">
-                                    <input class="form-control" type="password" placeholder="Password">
-                                </div>
-                                <div class="col-lg-6 form-group">
-                                    <input class="form-control" type="password" placeholder="Re-Password">
-                                </div>
-                                <div class="col-lg-6 form-group">
-                                    <button type="submit" value="submit" class="btn subs_btn form-control">register now</button>
-                                </div>
-                            </form>
-                        </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <a class="px-3" th:href="@{/reg}">Register</a>
+                        </form>
                     </div>
                 </div>
             </div>
