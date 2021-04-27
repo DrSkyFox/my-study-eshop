@@ -8,25 +8,40 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
+
 import org.springframework.stereotype.Component;
+import ru.geekbrains.persist.model.User;
 import ru.geekbrains.registration.OnRegistrationCompleteEvent;
+import ru.geekbrains.service.MailSendingService;
+import ru.geekbrains.service.UserService;
 
 @Component
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
 
 
     @Autowired
-    private IUserService service;
+    private UserService service;
 
     @Autowired
     private MessageSource messages;
 
-
+    @Autowired
+    private MailSendingService sendingService;
 
     @Autowired
     private Environment env;
 
     // API
+
+
+    public RegistrationListener(UserService service, MessageSource messages, MailSendingService sendingService, Environment env) {
+        this.service = service;
+        this.messages = messages;
+        this.sendingService = sendingService;
+        this.env = env;
+    }
+
+
 
     @Override
     public void onApplicationEvent(final OnRegistrationCompleteEvent event) {
@@ -39,7 +54,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         service.createVerificationTokenForUser(user, token);
 
         final SimpleMailMessage email = constructEmailMessage(event, user, token);
-        mailSender.send(email);
+        sendingService.send(email);
     }
 
     //

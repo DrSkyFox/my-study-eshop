@@ -6,32 +6,30 @@ import java.util.Locale;
 import org.springframework.context.ApplicationEvent;
 import ru.geekbrains.persist.model.User;
 
-@SuppressWarnings("serial")
+
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
 
     private final String appUrl;
-    private final Locale locale;
     private final User user;
+    private final Locale locale;
 
-    public OnRegistrationCompleteEvent(final User user, final Locale locale, final String appUrl) {
-        super(user);
+
+    public OnRegistrationCompleteEvent(Object source, String appUrl, User user, Locale locale) {
+        super(source);
+        this.appUrl = appUrl;
         this.user = user;
         this.locale = locale;
-        this.appUrl = appUrl;
     }
-
-    //
 
     public String getAppUrl() {
         return appUrl;
-    }
-
-    public Locale getLocale() {
-        return locale;
     }
 
     public User getUser() {
         return user;
     }
 
+    public Locale getLocale() {
+        return locale;
+    }
 }

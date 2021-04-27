@@ -1,4 +1,4 @@
-package ru.geekbrains.service;
+package ru.geekbrains.serviceimp;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.controller.repr.ProductRepr;
+import ru.geekbrains.service.CartService;
 import ru.geekbrains.service.model.LineItem;
 
 import java.io.Serializable;
