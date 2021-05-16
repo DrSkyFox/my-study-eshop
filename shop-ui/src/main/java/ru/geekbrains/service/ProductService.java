@@ -5,11 +5,11 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.controller.repr.ProductRepr;
+import ru.geekbrains.replication.ProductRepr;
 import ru.geekbrains.persist.model.Picture;
 import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repo.ProductRepository;
-import ru.geekbrains.persist.repo.ProductSpecification;
+import ru.geekbrains.persist.repositories.ProductRepository;
+import ru.geekbrains.persist.repositories.ProductSpecification;
 
 import java.util.List;
 import java.util.Optional;

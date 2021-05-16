@@ -1,10 +1,11 @@
 package ru.geekbrains.serviceimplementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.persist.repo.MailSMTPSettingsRepository;
+import ru.geekbrains.model.MessageModel;
 import ru.geekbrains.service.MailSendingService;
 
 
@@ -12,19 +13,38 @@ import ru.geekbrains.service.MailSendingService;
 @Service
 public class MailSendingImplementation implements MailSendingService {
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+
+    private JavaMailSender mailSender;
+
+    private Environment env;
 
     @Autowired
-    private MailSMTPSettingsRepository smtpSettingsRepository;
-
-    public MailSendingImplementation(MailSMTPSettingsRepository smtpSettingsRepository) {
-        this.smtpSettingsRepository = smtpSettingsRepository;
+    public MailSendingImplementation(JavaMailSender mailSender, Environment env) {
+        this.mailSender = mailSender;
+        this.env = env;
     }
 
     @Override
-    public void send(SimpleMailMessage simpleMailMessage) {
-        javaMailSender.send(simpleMailMessage);
+    public void send(MessageModel messageModel)
+    {
+        final SimpleMailMessage email = new SimpleMailMessage();
+        email.setFrom(env.getProperty("spring.mail.fromAddress"));
+        email.setTo(messageModel.getRecipientAddress());
+        email.setText(messageModel.getText());
+        email.setSubject(messageModel.getSubject());
     }
 
+    @Override
+    public void sendTest() {
+        SimpleMailMessage message = new SimpleMailMessage();
+
+        message.setTo(env.getProperty("spring.mail.fromAddress"));
+        message.setFrom(env.getProperty("spring.mail.fromAddress"));
+        message.setSubject("Test Simple Email");
+        message.setText("Hello, Im testing Simple Email");
+
+        // Send Message!
+        mailSender.send(message);
+
+    }
 }

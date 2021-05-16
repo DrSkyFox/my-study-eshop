@@ -1,12 +1,14 @@
 package ru.geekbrains.service;
 
 
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Service;
-import ru.geekbrains.persist.model.User;
+
+import ru.geekbrains.model.MessageModel;
+
 
 
 public interface MailSendingService {
 
-    void send(final SimpleMailMessage simpleMailMessage);
+    void send(MessageModel messageModel);
+
+    void sendTest();
 }

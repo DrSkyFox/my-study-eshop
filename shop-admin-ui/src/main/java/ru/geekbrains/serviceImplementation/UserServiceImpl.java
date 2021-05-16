@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.geekbrains.controllers.repr.UserRepr;
 import ru.geekbrains.persist.model.User;
-import ru.geekbrains.persist.repo.UserRepository;
+import ru.geekbrains.persist.repositories.UserRepository;
 import ru.geekbrains.service.UserService;
 
 import java.util.List;

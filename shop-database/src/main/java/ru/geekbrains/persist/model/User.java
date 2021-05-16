@@ -1,6 +1,7 @@
 package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Set;
 
 @Entity
@@ -20,23 +21,25 @@ public class User {
     @Column(length = 64, nullable = false)
     private String email;
 
+    @Column(nullable = false)
+    private Boolean enabled;
+
+    @Column
+    private Calendar calendar;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    private Boolean valid;
-
     public User() {
-        this.valid =false;
     }
 
     public User(Long id, String login, String password) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.valid = false;
     }
 
     public Long getId() {
@@ -79,11 +82,19 @@ public class User {
         this.email = email;
     }
 
-    public Boolean getValid() {
-        return valid;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setValid(Boolean valid) {
-        this.valid = valid;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
 }

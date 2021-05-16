@@ -1,7 +1,7 @@
 package ru.geekbrains.service;
 
-import ru.geekbrains.controller.repr.ProductRepr;
-import ru.geekbrains.service.model.LineItem;
+import ru.geekbrains.replication.ProductRepr;
+import ru.geekbrains.model.LineItem;
 
 import java.math.BigDecimal;
 import java.util.List;

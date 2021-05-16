@@ -6,40 +6,38 @@ import java.util.Date;
 
 @Entity
 public class PasswordResetToken {
+
     private static final int EXPIRATION = 60 * 24;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String token;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
+    @Column(nullable = false)
     private Date expiryDate;
 
+    @Column(nullable = false)
+    private Boolean active;
+
     public PasswordResetToken() {
-        super();
     }
 
-    public PasswordResetToken(final String token) {
-        super();
-        this.token = token;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-    }
 
     public PasswordResetToken(final String token, final User user) {
-        super();
         this.token = token;
         this.user = user;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
+        this.active = true;
     }
 
-    public Long getId() {
-        return id;
-    }
+    //
 
     public String getToken() {
         return token;
@@ -69,7 +67,8 @@ public class PasswordResetToken {
         final Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(new Date().getTime());
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
-        return new Date(cal.getTime().getTime());
+        return new Date(cal.getTime()
+                .getTime());
     }
 
     public void updateToken(final String token) {
@@ -83,9 +82,9 @@ public class PasswordResetToken {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getExpiryDate() == null) ? 0 : getExpiryDate().hashCode());
-        result = prime * result + ((getToken() == null) ? 0 : getToken().hashCode());
-        result = prime * result + ((getUser() == null) ? 0 : getUser().hashCode());
+        result = prime * result + ((expiryDate == null) ? 0 : expiryDate.hashCode());
+        result = prime * result + ((token == null) ? 0 : token.hashCode());
+        result = prime * result + ((user == null) ? 0 : user.hashCode());
         return result;
     }
 
@@ -101,25 +100,25 @@ public class PasswordResetToken {
             return false;
         }
         final PasswordResetToken other = (PasswordResetToken) obj;
-        if (getExpiryDate() == null) {
-            if (other.getExpiryDate() != null) {
+        if (expiryDate == null) {
+            if (other.expiryDate != null) {
                 return false;
             }
-        } else if (!getExpiryDate().equals(other.getExpiryDate())) {
+        } else if (!expiryDate.equals(other.expiryDate)) {
             return false;
         }
-        if (getToken() == null) {
-            if (other.getToken() != null) {
+        if (token == null) {
+            if (other.token != null) {
                 return false;
             }
-        } else if (!getToken().equals(other.getToken())) {
+        } else if (!token.equals(other.token)) {
             return false;
         }
-        if (getUser() == null) {
-            if (other.getUser() != null) {
+        if (user == null) {
+            if (other.user != null) {
                 return false;
             }
-        } else if (!getUser().equals(other.getUser())) {
+        } else if (!user.equals(other.user)) {
             return false;
         }
         return true;
@@ -128,7 +127,13 @@ public class PasswordResetToken {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Token [String=").append(token).append("]").append("[Expires").append(expiryDate).append("]");
+        builder.append("Token [String=")
+                .append(token)
+                .append("]")
+                .append("[Expires")
+                .append(expiryDate)
+                .append("]");
         return builder.toString();
     }
+
 }
