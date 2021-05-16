@@ -4,54 +4,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import ru.geekbrains.persist.model.MailSMTPSettings;
-import ru.geekbrains.persist.model.User;
 import ru.geekbrains.persist.repo.MailSMTPSettingsRepository;
-import ru.geekbrains.service.MailSending;
+import ru.geekbrains.service.MailSendingService;
 
-import javax.annotation.PostConstruct;
 
 
 @Service
-public class MailSendingImplementation implements MailSending {
+public class MailSendingImplementation implements MailSendingService {
 
     @Autowired
     private JavaMailSender javaMailSender;
 
+    @Autowired
     private MailSMTPSettingsRepository smtpSettingsRepository;
 
-    @PostConstruct
-    void init() {
-
-    }
-
-
-
-    @Override
-    public void sendMailRegistrationForm(User user) {
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo(user.getEmail());
-        msg.setSubject("Registration Confirmation");
-        msg.setText("Please click for complete registration: ");
+    public MailSendingImplementation(MailSMTPSettingsRepository smtpSettingsRepository) {
+        this.smtpSettingsRepository = smtpSettingsRepository;
     }
 
     @Override
-    public void sendMailForgotPassword() {
-
+    public void send(SimpleMailMessage simpleMailMessage) {
+        javaMailSender.send(simpleMailMessage);
     }
 
-    @Override
-    public void sendMailSubscribe() {
-
-    }
-
-    @Override
-    public void unsubscribe() {
-
-    }
-
-    @Override
-    public void subscribe() {
-
-    }
 }

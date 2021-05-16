@@ -16,6 +16,9 @@ public class UserRepr {
     @NotEmpty
     private String password;
 
+    @NotEmpty
+    private String email;
+
     private Set<Role> roles;
 
     public UserRepr() {
@@ -26,7 +29,9 @@ public class UserRepr {
         this.login = user.getLogin();
         this.password = user.getPassword();
         this.roles = user.getRoles();
+        this.email = user.getEmail();
     }
+
 
     public Long getId() {
         return id;
@@ -52,20 +57,19 @@ public class UserRepr {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "UserRepr{" +
-                "id=" + id +
-                ", username='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }

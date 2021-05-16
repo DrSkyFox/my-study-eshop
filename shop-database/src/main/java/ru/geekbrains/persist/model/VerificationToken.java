@@ -2,6 +2,7 @@ package ru.geekbrains.persist.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 public class VerificationToken {
@@ -21,9 +22,9 @@ public class VerificationToken {
     private Date expiryDate;
 
     public VerificationToken(String token, User user, Date expiryDate) {
-        this.token = token;
         this.user = user;
-        this.expiryDate = expiryDate;
+        this.expiryDate = new Date();
+        this.token = UUID.randomUUID().toString();
     }
 
     public VerificationToken() {
