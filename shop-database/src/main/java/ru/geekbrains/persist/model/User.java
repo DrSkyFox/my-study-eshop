@@ -36,11 +36,22 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String login, String password) {
-        this.id = id;
+    public User(String login, String password, String email, Boolean enabled, Calendar calendar, Set<Role> roles) {
         this.login = login;
         this.password = password;
+        this.email = email;
+        this.enabled = enabled;
+        this.calendar = calendar;
+        this.roles = roles;
     }
+
+    public User(String login, String password, String email) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -96,5 +107,17 @@ public class User {
 
     public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                '}';
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.exceptions.EmailExistsException;
 import ru.geekbrains.persist.repositories.PasswordResetTokenRepository;
+import ru.geekbrains.persist.repositories.RoleRepository;
 import ru.geekbrains.persist.repositories.UserRepository;
 import ru.geekbrains.persist.repositories.VerificationTokenRepository;
 import ru.geekbrains.persist.model.PasswordResetToken;
@@ -28,16 +29,20 @@ public class UserServiceImpl implements IUserService {
 
     private final PasswordResetTokenRepository passwordTokenRepository;
 
+    private final RoleRepository roleRepository;
+
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository repository, VerificationTokenRepository verificationTokenRepository, PasswordResetTokenRepository passwordTokenRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository repository, VerificationTokenRepository verificationTokenRepository,
+                           PasswordResetTokenRepository passwordTokenRepository, RoleRepository roleRepository,
+                           PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.verificationTokenRepository = verificationTokenRepository;
         this.passwordTokenRepository = passwordTokenRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
 
     @Override
     public User registerNewUser(User user) throws EmailExistsException {
