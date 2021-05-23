@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.geekbrains.controllers.repr.RoleRepr;
 import ru.geekbrains.error.NotFoundException;
-import ru.geekbrains.persist.repo.RoleRepository;
 import ru.geekbrains.service.RoleService;
 
 import javax.validation.Valid;

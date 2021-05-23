@@ -10,7 +10,7 @@ import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.error.NotFoundException;
 import ru.geekbrains.persist.model.Picture;
 import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repo.ProductRepository;
+import ru.geekbrains.persist.repositories.ProductRepository;
 import ru.geekbrains.service.PictureService;
 import ru.geekbrains.service.ProductService;
 

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.controllers.repr.RoleRepr;
 import ru.geekbrains.persist.model.Role;
-import ru.geekbrains.persist.repo.RoleRepository;
+import ru.geekbrains.persist.repositories.RoleRepository;
 import ru.geekbrains.service.RoleService;
 
 

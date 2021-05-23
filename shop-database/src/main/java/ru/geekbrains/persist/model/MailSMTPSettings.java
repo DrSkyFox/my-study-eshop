@@ -1,7 +1,5 @@
 package ru.geekbrains.persist.model;
 
-import liquibase.pro.packaged.I;
-
 import javax.persistence.*;
 
 @Entity
@@ -16,11 +14,8 @@ public class MailSMTPSettings {
     @Column(length = 5, nullable = false)
     private Integer port;
 
-    @Column(length = 1, nullable = false)
-    private Boolean useSSL;
-
     @Column(length = 64, nullable = false)
-    private String loginSMTP;
+    private String login;
 
     @Column(length = 512, nullable = false)
     private String password;
@@ -28,21 +23,20 @@ public class MailSMTPSettings {
     @Column(length = 64, nullable = false)
     private String mailAddressFrom;
 
-    @Column
-    private Boolean enabled;
+    @Column(length = 1, nullable = false)
+    private Boolean mailServerStartTls;
 
-    @Column
-    private Boolean deleted;
+    @Column(length = 1, nullable = false)
+    private Boolean mailServerAuth;
 
-    public MailSMTPSettings(String SMTPServer, Integer port, Boolean useSSL, String loginSMTP, String password, String mailAddressFrom, Boolean enabled) {
+    public MailSMTPSettings(String SMTPServer, Integer port, String login, String password, String mailAddressFrom, Boolean mailServerStartTls, Boolean mailServerAuth) {
         this.SMTPServer = SMTPServer;
         this.port = port;
-        this.useSSL = useSSL;
-        this.loginSMTP = loginSMTP;
+        this.login = login;
         this.password = password;
         this.mailAddressFrom = mailAddressFrom;
-        this.enabled = false;
-        this.deleted = false;
+        this.mailServerStartTls = mailServerStartTls;
+        this.mailServerAuth = mailServerAuth;
     }
 
     public MailSMTPSettings() {
@@ -72,20 +66,12 @@ public class MailSMTPSettings {
         this.port = port;
     }
 
-    public Boolean getUseSSL() {
-        return useSSL;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUseSSL(Boolean useSSL) {
-        this.useSSL = useSSL;
-    }
-
-    public String getLoginSMTP() {
-        return loginSMTP;
-    }
-
-    public void setLoginSMTP(String loginSMTP) {
-        this.loginSMTP = loginSMTP;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -104,19 +90,19 @@ public class MailSMTPSettings {
         this.mailAddressFrom = mailAddressFrom;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getMailServerStartTls() {
+        return mailServerStartTls;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setMailServerStartTls(Boolean mailServerStartTls) {
+        this.mailServerStartTls = mailServerStartTls;
     }
 
-    public Boolean getDeleted() {
-        return deleted;
+    public Boolean getMailServerAuth() {
+        return mailServerAuth;
     }
 
-    public void setDeleted(Boolean deleted) {
-        this.deleted = deleted;
+    public void setMailServerAuth(Boolean mailServerAuth) {
+        this.mailServerAuth = mailServerAuth;
     }
 }
