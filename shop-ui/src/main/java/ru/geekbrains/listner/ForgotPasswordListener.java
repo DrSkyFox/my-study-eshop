@@ -37,11 +37,13 @@ public class ForgotPasswordListener implements ApplicationListener<OnForgotPassw
     private void forgotPassword(final OnForgotPasswordEvent event) {
         logger.info("User registration complete. Send confirm message to email: {}", event.getUser().getEmail());
         final User user  = event.getUser();
-        final String token = UUID.randomUUID()
-                .toString();
-        logger.info("User forgot password request complete. Send recovery password link message to email: email info: {},  token : {}", user.getEmail(), token);
-        service.createPasswordResetTokenForUser(user, token);
 
+        String token =  service.createPasswordResetTokenForUser(user);
+        logger.info("User forgot password request complete. Send recovery password link message to email: email info: {},  token : {}", user.getEmail(), token);
+        if(token == null) {
+            logger.warn("Token is null");
+            return;
+        }
         final String subject = "Reset Password";
         final String resetUrl = event.getURL() + "/user/changePassword?id=" + user.getId() + "&token=" + token;
         logger.info("reset url: {}", resetUrl);

@@ -9,7 +9,7 @@ import ru.geekbrains.persist.repositories.CategoryRepository;
 import ru.geekbrains.service.ProductService;
 
 @Controller
-@RequestMapping
+@RequestMapping("/product")
 public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);

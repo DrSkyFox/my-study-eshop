@@ -16,13 +16,13 @@ public interface IUserService {
 
     Optional<User> findUserByEmail(final String email);
 
-    void createVerificationTokenForUser(User user, String token);
+    String createVerificationTokenForUser(User user);
 
     VerificationToken getVerificationToken(String token);
 
     void saveRegisteredUser(User user);
 
-    void createPasswordResetTokenForUser(User user, String token);
+    String createPasswordResetTokenForUser(User user);
 
     PasswordResetToken getPasswordResetToken(String token);
 

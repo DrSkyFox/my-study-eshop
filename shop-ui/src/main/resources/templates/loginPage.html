@@ -8,16 +8,12 @@
 <header th:replace="fragments/main_menu.html :: main_menu">
 </header>
 <!--================End Menu Area =================-->
+
+
 <body>
 
-<div>
-    <h1 class="alert alert-info" th:utext="#{message.regSuccConfirmed}">success</h1>
-    <br/>
-    <span th:if="${param.token != null}" th:utext="#{token.message}">token</span>
-    <span th:utext="${param.token}">token</span>
-    <br/>
-    <a class="btn btn-primary" th:href="@{/login}" th:utext="#{label.login}">login</a>
-</div>
+<div th:block th:replace="/fragments/autorizations :: login"/>
+
 
 <!--================Footer Area =================-->
 <footer th:replace="fragments/footer.html :: footer"></footer>

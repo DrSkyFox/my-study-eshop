@@ -16,6 +16,7 @@ import ru.geekbrains.persist.model.VerificationToken;
 import ru.geekbrains.service.IUserService;
 
 import java.util.Optional;
+import java.util.UUID;
 
 
 @Service
@@ -72,15 +73,19 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void createVerificationTokenForUser(final User user, final String token) {
+    public String createVerificationTokenForUser(final User user) {
         logger.info("VerificationToken saving");
+        final String token = UUID.randomUUID().toString();
+        logger.info("Verification token {} for User {}", token, user.getEmail());
         final VerificationToken myToken = new VerificationToken(token, user);
         try {
             verificationTokenRepository.save(myToken);
         } catch (Exception e) {
             logger.warn(e.getMessage());
+            return null;
         }
         logger.info("VerificationToken saved");
+        return token;
     }
 
     @Override
@@ -105,11 +110,19 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void createPasswordResetTokenForUser(User user, String token) {
+    public String createPasswordResetTokenForUser(User user) {
+        final String token = UUID.randomUUID()
+                .toString();
         logger.info("Creating reset token in DB. Token is  {}", token);
         final PasswordResetToken myToken = new PasswordResetToken(token, user);
         logger.info("Saving token to DB");
-        passwordTokenRepository.save(myToken);
+        try {
+            passwordTokenRepository.save(myToken);
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+            return null;
+        }
+        return token;
     }
 
     @Override
