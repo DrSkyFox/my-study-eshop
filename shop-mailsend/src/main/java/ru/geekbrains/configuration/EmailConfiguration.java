@@ -3,6 +3,7 @@ package ru.geekbrains.configuration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,6 +16,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import java.util.Properties;
 
 @Configuration
+@PropertySource("mail.properties")
 public class EmailConfiguration {
 
     @Value("${spring.mail.host}")
@@ -30,23 +32,18 @@ public class EmailConfiguration {
     private String mailServerPassword;
 
     @Value("${spring.mail.properties.mail.smtp.auth}")
-    private String mailServerAuth;
+    private Boolean mailServerAuth;
 
     @Value("${spring.mail.properties.mail.smtp.starttls.enable}")
     private String mailServerStartTls;
 
-
-
     @Bean
     public JavaMailSender getJavaMailSender() {
 
-
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-
 
         mailSender.setHost(mailServerHost);
         mailSender.setPort(mailServerPort);
-
         mailSender.setUsername(mailServerUsername);
         mailSender.setPassword(mailServerPassword);
 

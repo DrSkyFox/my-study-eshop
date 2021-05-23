@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
+@Table(name = "verificationtoken")
 public class VerificationToken {
 
     private static final int EXPIRATION = 60 * 24;
@@ -14,17 +15,17 @@ public class VerificationToken {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = true)
+    @Column(name = "token", nullable = true)
     private String token;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-    @Column(nullable = true)
+    @Column(name = "expirydate", nullable = true)
     private Date expiryDate;
 
-    @Column(nullable = false)
+    @Column(name = "active", nullable = false)
     private Boolean active;
 
     public VerificationToken() {

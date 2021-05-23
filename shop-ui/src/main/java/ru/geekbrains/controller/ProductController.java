@@ -9,7 +9,7 @@ import ru.geekbrains.persist.repositories.CategoryRepository;
 import ru.geekbrains.service.ProductService;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/shop")
 public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
@@ -17,6 +17,8 @@ public class ProductController {
     private final CategoryRepository categoryRepository;
 
     private final ProductService productService;
+
+
 
     public ProductController(CategoryRepository categoryRepository, ProductService productService) {
         this.categoryRepository = categoryRepository;

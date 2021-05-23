@@ -1,4 +1,4 @@
-package ru.geekbrains.chat;
+package ru.geekbrains.configuration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
+import ru.geekbrains.chat.ChatPrincipal;
 
 import java.security.Principal;
 import java.util.Map;
