@@ -50,6 +50,11 @@ public class AccountController {
         return "loginPage";
     }
 
+    @GetMapping("/forgotPassword")
+    public String forgotPage() {
+        return "forgotPassword";
+    }
+
     @GetMapping("/signup")
     public String registrationForm(Model model) {
         model.addAttribute("user", new UserRepr());

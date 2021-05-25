@@ -37,7 +37,7 @@ public class ChatController {
                 createHeaders(headerAccessor.getSessionId()));
     }
 
-    @GetMapping("/test/message")
+    @GetMapping("/chat/message")
     public void sendMessage() {
         template.convertAndSend("/chat_out/receive_message",
                 new ChatMessage("Server", "Test message"));

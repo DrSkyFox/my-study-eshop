@@ -3,33 +3,34 @@ package ru.geekbrains.persist.model;
 import javax.persistence.*;
 
 @Entity
-public class MailSMTPSettings {
+@Table(name = "mailset")
+public class Mailset {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 64, nullable = false)
+    @Column(name = "smtpserver", length = 64, nullable = false)
     private String SMTPServer;
 
-    @Column(length = 5, nullable = false)
+    @Column(name = "port", length = 5, nullable = false)
     private Integer port;
 
-    @Column(length = 64, nullable = false)
+    @Column(name = "login", length = 64, nullable = false)
     private String login;
 
-    @Column(length = 512, nullable = false)
+    @Column(name = "password", length = 512, nullable = false)
     private String password;
 
-    @Column(length = 64, nullable = false)
+    @Column(name = "mailaddressfrom", length = 64, nullable = false)
     private String mailAddressFrom;
 
-    @Column(length = 1, nullable = false)
+    @Column(name = "mailserverstarttls", length = 1, nullable = false)
     private Boolean mailServerStartTls;
 
-    @Column(length = 1, nullable = false)
+    @Column(name = "mailserverauth", length = 1, nullable = false)
     private Boolean mailServerAuth;
 
-    public MailSMTPSettings(String SMTPServer, Integer port, String login, String password, String mailAddressFrom, Boolean mailServerStartTls, Boolean mailServerAuth) {
+    public Mailset(String SMTPServer, Integer port, String login, String password, String mailAddressFrom, Boolean mailServerStartTls, Boolean mailServerAuth) {
         this.SMTPServer = SMTPServer;
         this.port = port;
         this.login = login;
@@ -39,7 +40,7 @@ public class MailSMTPSettings {
         this.mailServerAuth = mailServerAuth;
     }
 
-    public MailSMTPSettings() {
+    public Mailset() {
     }
 
     public Long getId() {

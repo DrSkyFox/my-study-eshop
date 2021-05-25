@@ -22,6 +22,7 @@
         <maven.compiler.target>16</maven.compiler.target>
         <java.version>16</java.version>
         <liquibase.version>4.3.1</liquibase.version>
+        <maven.pluginversio>2.4.5</maven.pluginversio>
     </properties>
 
     <dependencyManagement>
@@ -40,6 +41,7 @@
         <module>shop-database</module>
         <module>shop-picture-service</module>
         <module>shop-mailsend</module>
+        <module>rabbit-mq-messanger</module>
     </modules>
 
 </project>

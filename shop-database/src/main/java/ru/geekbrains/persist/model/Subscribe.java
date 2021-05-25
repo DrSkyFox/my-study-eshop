@@ -5,6 +5,7 @@ import java.time.LocalDate;
 
 
 @Entity
+@Table(name = "subscribe")
 public class Subscribe {
 
     @Id
@@ -15,10 +16,10 @@ public class Subscribe {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-    @Column
+    @Column(name = "active", nullable = false)
     private Boolean active;
 
-    @Column
+    @Column(name = "onsubscribedate")
     private LocalDate onSubscribeDate;
 
     public Subscribe(User user, Boolean active, LocalDate onSubscribeDate) {

@@ -12,19 +12,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 32, nullable = false)
+    @Column(name = "login" ,length = 32, nullable = false)
     private String login;
 
-    @Column(length = 256, nullable = false)
+    @Column(name = "password", length = 256, nullable = false)
     private String password;
 
-    @Column(length = 64, nullable = false)
+    @Column(name = "email", length = 64, nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(name = "enabled", nullable = false)
     private Boolean enabled;
 
-    @Column
+    @Column(name = "calendar")
     private Calendar calendar;
 
     @ManyToMany(fetch = FetchType.LAZY)

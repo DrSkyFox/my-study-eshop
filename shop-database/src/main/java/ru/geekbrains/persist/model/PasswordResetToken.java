@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
+@Table(name = "passwordresettoken")
 public class PasswordResetToken {
 
     private static final int EXPIRATION = 60 * 24;
@@ -13,17 +14,17 @@ public class PasswordResetToken {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "token", nullable = false)
     private String token;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "expirydate", nullable = false)
     private Date expiryDate;
 
-    @Column(nullable = false)
+    @Column(name = "active", nullable = false)
     private Boolean active;
 
     public PasswordResetToken() {
@@ -37,13 +38,20 @@ public class PasswordResetToken {
         this.active = true;
     }
 
-    //
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getToken() {
         return token;
     }
 
-    public void setToken(final String token) {
+    public void setToken(String token) {
         this.token = token;
     }
 
@@ -51,7 +59,7 @@ public class PasswordResetToken {
         return user;
     }
 
-    public void setUser(final User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -59,8 +67,16 @@ public class PasswordResetToken {
         return expiryDate;
     }
 
-    public void setExpiryDate(final Date expiryDate) {
+    public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     private Date calculateExpiryDate(final int expiryTimeInMinutes) {

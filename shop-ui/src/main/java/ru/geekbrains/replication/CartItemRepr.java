@@ -21,4 +21,13 @@ public class CartItemRepr {
     public void setQty(Integer qty) {
         this.qty = qty;
     }
+
+
+    public CartItemRepr() {
+    }
+
+    public CartItemRepr(Long productId, Integer qty) {
+        this.productId = productId;
+        this.qty = qty;
+    }
 }

@@ -1,6 +1,83 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet author="dfox (generated)" id="1617742706359-1">
+    <changeSet author="dfox (generated)" id="1621800153000-1">
+        <createSequence incrementBy="1" sequenceName="hibernate_sequence" startValue="1"/>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-2">
+        <createTable tableName="Mailset">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="MailsetPK"/>
+            </column>
+            <column name="SMTPServer" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="login" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mailAddressFrom" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mailServerAuth" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mailServerStartTls" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="port" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-3">
+        <createTable tableName="PasswordResetToken">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PasswordResetTokenPK"/>
+            </column>
+            <column name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiryDate" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="token" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-4">
+        <createTable tableName="Subscribe">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SubscribePK"/>
+            </column>
+            <column name="active" type="BOOLEAN"/>
+            <column name="onSubscribeDate" type="date"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-5">
+        <createTable tableName="VerificationToken">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="VerificationTokenPK"/>
+            </column>
+            <column name="active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiryDate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="token" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-6">
         <createTable tableName="brands">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="brandsPK"/>
@@ -10,7 +87,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-2">
+    <changeSet author="dfox (generated)" id="1621800153000-7">
         <createTable tableName="categories">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="categoriesPK"/>
@@ -20,7 +97,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-3">
+    <changeSet author="dfox (generated)" id="1621800153000-8">
         <createTable tableName="pictures">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="picturesPK"/>
@@ -37,7 +114,7 @@
             <column name="product_id" type="BIGINT"/>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-4">
+    <changeSet author="dfox (generated)" id="1621800153000-9">
         <createTable tableName="pictures_data">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pictures_dataPK"/>
@@ -46,7 +123,7 @@
             <column name="file_name" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-5">
+    <changeSet author="dfox (generated)" id="1621800153000-10">
         <createTable tableName="products">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="productsPK"/>
@@ -63,7 +140,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-6">
+    <changeSet author="dfox (generated)" id="1621800153000-11">
         <createTable tableName="roles">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="rolesPK"/>
@@ -73,10 +150,17 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-7">
+    <changeSet author="dfox (generated)" id="1621800153000-12">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="usersPK"/>
+            </column>
+            <column name="calendar" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="email" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
             </column>
             <column name="login" type="VARCHAR(32)">
                 <constraints nullable="false"/>
@@ -86,7 +170,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-8">
+    <changeSet author="dfox (generated)" id="1621800153000-13">
         <createTable tableName="users_roles">
             <column name="user_id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true"/>
@@ -96,34 +180,43 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-9">
+    <changeSet author="dfox (generated)" id="1621800153000-14">
         <addUniqueConstraint columnNames="name" constraintName="UC_BRANDSNAME_COL" tableName="brands"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-10">
+    <changeSet author="dfox (generated)" id="1621800153000-15">
         <addUniqueConstraint columnNames="name" constraintName="UC_CATEGORIESNAME_COL" tableName="categories"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-11">
+    <changeSet author="dfox (generated)" id="1621800153000-16">
         <addUniqueConstraint columnNames="name" constraintName="UC_ROLESNAME_COL" tableName="roles"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-12">
+    <changeSet author="dfox (generated)" id="1621800153000-17">
         <addUniqueConstraint columnNames="picture_data_id" constraintName="UK_ehsu2tyinopypjox1ijxt3g3c" tableName="pictures"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-13">
+    <changeSet author="dfox (generated)" id="1621800153000-18">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_roles" constraintName="FK2o0jvgh89lemvvo17cbqvdxaa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-14">
+    <changeSet author="dfox (generated)" id="1621800153000-19">
         <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="pictures" constraintName="FK43hu51t487tsmo7tltxmdx9br" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="products" validate="true"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-15">
+    <changeSet author="dfox (generated)" id="1621800153000-20">
         <addForeignKeyConstraint baseColumnNames="brand_id" baseTableName="products" constraintName="FKa3a4mpsfdf4d2y6r8ra3sc8mv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="brands" validate="true"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-16">
+    <changeSet author="dfox (generated)" id="1621800153000-21">
         <addForeignKeyConstraint baseColumnNames="picture_data_id" baseTableName="pictures" constraintName="FKe9cv52k04xoy6cj8xy308gnw3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="pictures_data" validate="true"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-17">
+    <changeSet author="dfox (generated)" id="1621800153000-22">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="PasswordResetToken" constraintName="FKg3fbfo1tc9louotgq5r940avr" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-23">
         <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="users_roles" constraintName="FKj6m8fwv7oqv74fcehir1a9ffy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
     </changeSet>
-    <changeSet author="dfox (generated)" id="1617742706359-18">
+    <changeSet author="dfox (generated)" id="1621800153000-24">
         <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="products" constraintName="FKog2rp4qthbtt2lfyhfo32lsw9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="categories" validate="true"/>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-25">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="VerificationToken" constraintName="FKq5m7x6o3jfcr0wietj0niiet0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="dfox (generated)" id="1621800153000-26">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="Subscribe" constraintName="FKrrxv1jsexyeklk978m3a73nqh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
     </changeSet>
 </databaseChangeLog>

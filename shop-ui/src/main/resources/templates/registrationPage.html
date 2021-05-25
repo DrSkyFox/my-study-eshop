@@ -16,7 +16,7 @@
   <h1>Registration page</h1>
   <form id="userForm" th:action="@{/account/reg}" th:object="${user}" action="#" method="post" class="form-horizontal">
 
-    <div th:if="${#fields.hasErrors('messageError')}" th:errors="*{messageError}" class="alert alert-danger">Incorrect password confirmation</div>
+    <div th:if="${#fields.hasErrors('global')}" th:errors="*{global}" class="alert alert-danger">Incorrect password confirmation</div>
 
     <input type="hidden" th:field="*{id}"/>
 
@@ -36,11 +36,11 @@
       </div>
     </div>
 
-    <div class="form-group" th:classappend="${#fields.hasErrors('passwordConfirmation')} ? 'has-error'">
+    <div class="form-group" th:classappend="${#fields.hasErrors('matchingPassword')} ? 'has-error'">
       <label class="control-label col-xs-2" for="passwordConfirmation">Password Confirmation</label>
       <div class="col-xs-10">
         <input id="passwordConfirmation" type="password" title="passwordConfirmation" th:field="*{matchingPassword}"/>
-        <span th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{matchingPassword}" class="help-block">Password Confirmation Error</span>
+        <span th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}" class="help-block">Password Confirmation Error</span>
       </div>
     </div>
 
