@@ -3,6 +3,7 @@ package ru.geekbrains.configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -12,6 +13,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import ru.geekbrains.handlers.SuccessAuthHandler;
 import ru.geekbrains.security.UserAuthService;
 
 @EnableWebSecurity
@@ -44,6 +47,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
+        String[] staticResources = {
+                "/css/**",
+                "/js/**",
+                "/img/**"
+        };
+
+
         http
                 //configure websocket
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
@@ -51,7 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 //configure other
                 .authorizeRequests()
-                .antMatchers("/**/*.css", "/**/*.js", "/**/*.jpg", "/**/*.png").permitAll()
+                .antMatchers(staticResources).permitAll()
                 .antMatchers(
                         "/shop/**",
                         "/account/**",
@@ -63,10 +73,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/account/login").permitAll()
                 .loginProcessingUrl("/doLogin")
-                .defaultSuccessUrl("/product")
+                .successHandler(getAuthSuccessHandler())
                 .and().logout().permitAll().logoutUrl("/account/doLogout")
                 .and()
                 .csrf().disable();
         ;
     }
+
+    @Bean
+    public AuthenticationSuccessHandler getAuthSuccessHandler(){
+        return new SuccessAuthHandler();
+    }
+
+
 }
