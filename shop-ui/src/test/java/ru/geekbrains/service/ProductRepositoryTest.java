@@ -2,11 +2,13 @@ package ru.geekbrains.service;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.geekbrains.controller.repr.ProductRepr;
+
 import ru.geekbrains.persist.model.Brand;
 import ru.geekbrains.persist.model.Category;
 import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repo.ProductRepository;
+import ru.geekbrains.persist.repositories.ProductRepository;
+import ru.geekbrains.replication.ProductRepr;
+
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
