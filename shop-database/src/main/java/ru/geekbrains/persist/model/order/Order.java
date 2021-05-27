@@ -1,13 +1,13 @@
 package ru.geekbrains.persist.model.order;
 
 import ru.geekbrains.persist.model.accounts.User;
-import ru.geekbrains.persist.model.goods.Product;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
+
 
 @Entity
 @Table(name = "orders")
@@ -38,11 +38,14 @@ public class Order {
 
 
     public Order(Date creationDate, BigDecimal totalCost, StatusOrder status, List<OrderItem> orderItems, User user) {
-        this.creationDate = creationDate;
+        this.creationDate = Calendar.getInstance().getTime();
         this.totalCost = calcTotalCost();
         this.status = status;
         this.orderItems = orderItems;
         this.user = user;
+    }
+
+    public Order() {
     }
 
     public Long getId() {

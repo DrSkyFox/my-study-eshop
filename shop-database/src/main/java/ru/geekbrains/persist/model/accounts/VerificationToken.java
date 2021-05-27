@@ -44,6 +44,23 @@ public class VerificationToken {
         this.active = true;
     }
 
+
+    public VerificationToken(final String token, final int expiration) {
+        this.token = token;
+        this.expiryDate = calculateExpiryDate(expiration);
+        this.active = true;
+    }
+
+    public VerificationToken(final String token, final User user, final int expiration) {
+        this.token = token;
+        this.user = user;
+        this.expiryDate = calculateExpiryDate(expiration);
+        this.active = true;
+    }
+
+
+
+
     public String getToken() {
         return token;
     }
