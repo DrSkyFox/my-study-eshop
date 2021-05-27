@@ -1,7 +1,7 @@
-package ru.geekbrains.persist.repositories;
+package ru.geekbrains.persist.repositories.accounts;
 
 import org.springframework.data.jpa.domain.Specification;
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.User;
 
 import javax.persistence.criteria.JoinType;
 

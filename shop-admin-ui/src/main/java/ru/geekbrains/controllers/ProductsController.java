@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.error.NotFoundException;
-import ru.geekbrains.persist.repositories.BrandRepository;
-import ru.geekbrains.persist.repositories.CategoryRepository;
+import ru.geekbrains.persist.repositories.goods.BrandRepository;
+import ru.geekbrains.persist.repositories.goods.CategoryRepository;
 import ru.geekbrains.service.ProductService;
 
 

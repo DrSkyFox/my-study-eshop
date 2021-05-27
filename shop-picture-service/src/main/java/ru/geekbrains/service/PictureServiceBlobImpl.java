@@ -3,10 +3,10 @@ package ru.geekbrains.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.geekbrains.persist.model.Picture;
-import ru.geekbrains.persist.model.PictureData;
-import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repositories.PictureRepository;
+import ru.geekbrains.persist.model.goods.Picture;
+import ru.geekbrains.persist.model.goods.PictureData;
+import ru.geekbrains.persist.model.goods.Product;
+import ru.geekbrains.persist.repositories.goods.PictureRepository;
 
 import java.util.Optional;
 

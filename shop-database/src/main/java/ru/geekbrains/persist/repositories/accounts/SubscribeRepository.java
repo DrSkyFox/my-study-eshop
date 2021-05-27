@@ -1,8 +1,8 @@
-package ru.geekbrains.persist.repositories;
+package ru.geekbrains.persist.repositories.accounts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.geekbrains.persist.model.Subscribe;
+import ru.geekbrains.persist.model.mailing.Subscribe;
 
 import java.util.List;
 

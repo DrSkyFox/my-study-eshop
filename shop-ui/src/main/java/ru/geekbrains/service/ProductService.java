@@ -6,10 +6,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import ru.geekbrains.replication.ProductRepr;
-import ru.geekbrains.persist.model.Picture;
-import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repositories.ProductRepository;
-import ru.geekbrains.persist.repositories.ProductSpecification;
+import ru.geekbrains.persist.model.goods.Picture;
+import ru.geekbrains.persist.model.goods.Product;
+import ru.geekbrains.persist.repositories.goods.ProductRepository;
+import ru.geekbrains.persist.repositories.goods.ProductSpecification;
 
 import java.util.List;
 import java.util.Optional;

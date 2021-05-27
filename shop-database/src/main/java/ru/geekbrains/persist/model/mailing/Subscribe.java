@@ -1,4 +1,6 @@
-package ru.geekbrains.persist.model;
+package ru.geekbrains.persist.model.mailing;
+
+import ru.geekbrains.persist.model.accounts.User;
 
 import javax.persistence.*;
 import java.time.LocalDate;

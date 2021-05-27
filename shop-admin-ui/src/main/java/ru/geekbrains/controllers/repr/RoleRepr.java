@@ -1,9 +1,8 @@
 package ru.geekbrains.controllers.repr;
 
-import ru.geekbrains.persist.model.Role;
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.Role;
+import ru.geekbrains.persist.model.accounts.User;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Objects;

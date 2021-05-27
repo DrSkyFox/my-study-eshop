@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.geekbrains.persist.model.Category;
-import ru.geekbrains.persist.repositories.CategoryRepository;
+import ru.geekbrains.persist.model.goods.Category;
+import ru.geekbrains.persist.repositories.goods.CategoryRepository;
 
 
 @Controller

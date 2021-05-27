@@ -1,7 +1,7 @@
 package ru.geekbrains.service;
 
-import ru.geekbrains.persist.model.PictureData;
-import ru.geekbrains.persist.model.Product;
+import ru.geekbrains.persist.model.goods.PictureData;
+import ru.geekbrains.persist.model.goods.Product;
 
 import java.util.Optional;
 

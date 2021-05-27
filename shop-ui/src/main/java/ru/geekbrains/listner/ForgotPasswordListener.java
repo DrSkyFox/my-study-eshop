@@ -7,11 +7,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import ru.geekbrains.events.OnForgotPasswordEvent;
 import ru.geekbrains.model.MessageModel;
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.User;
 import ru.geekbrains.service.IUserService;
 import ru.geekbrains.service.MailSendingService;
-
-import java.util.UUID;
 
 @Component
 public class ForgotPasswordListener implements ApplicationListener<OnForgotPasswordEvent> {

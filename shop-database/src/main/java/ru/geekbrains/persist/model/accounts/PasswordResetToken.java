@@ -1,55 +1,57 @@
-package ru.geekbrains.persist.model;
+package ru.geekbrains.persist.model.accounts;
 
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.UUID;
 
 @Entity
-@Table(name = "verificationtoken")
-public class VerificationToken {
+@Table(name = "passwordresettoken")
+public class PasswordResetToken {
 
     private static final int EXPIRATION = 60 * 24;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "token", nullable = true)
+    @Column(name = "token", nullable = false)
     private String token;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-    @Column(name = "expirydate", nullable = true)
+    @Column(name = "expirydate", nullable = false)
     private Date expiryDate;
 
     @Column(name = "active", nullable = false)
     private Boolean active;
 
-    public VerificationToken() {
-        super();
+    public PasswordResetToken() {
     }
 
-    public VerificationToken(final String token) {
-        this.token = token;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-        this.active = true;
-    }
 
-    public VerificationToken(final String token, final User user) {
+    public PasswordResetToken(final String token, final User user) {
         this.token = token;
         this.user = user;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
         this.active = true;
     }
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getToken() {
         return token;
     }
 
-    public void setToken(final String token) {
+    public void setToken(String token) {
         this.token = token;
     }
 
@@ -57,7 +59,7 @@ public class VerificationToken {
         return user;
     }
 
-    public void setUser(final User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -65,8 +67,16 @@ public class VerificationToken {
         return expiryDate;
     }
 
-    public void setExpiryDate(final Date expiryDate) {
+    public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     private Date calculateExpiryDate(final int expiryTimeInMinutes) {
@@ -80,14 +90,6 @@ public class VerificationToken {
     public void updateToken(final String token) {
         this.token = token;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
     }
 
     //
@@ -113,7 +115,7 @@ public class VerificationToken {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final VerificationToken other = (VerificationToken) obj;
+        final PasswordResetToken other = (PasswordResetToken) obj;
         if (expiryDate == null) {
             if (other.expiryDate != null) {
                 return false;
@@ -140,12 +142,14 @@ public class VerificationToken {
 
     @Override
     public String toString() {
-        return "VerificationToken{" +
-                "id=" + id +
-                ", token='" + token + '\'' +
-                ", user=" + user +
-                ", expiryDate=" + expiryDate +
-                ", active=" + active +
-                '}';
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Token [String=")
+                .append(token)
+                .append("]")
+                .append("[Expires")
+                .append(expiryDate)
+                .append("]");
+        return builder.toString();
     }
+
 }

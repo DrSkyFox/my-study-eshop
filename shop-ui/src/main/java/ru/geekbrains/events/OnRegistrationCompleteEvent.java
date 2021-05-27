@@ -1,7 +1,7 @@
 package ru.geekbrains.events;
 
 import org.springframework.context.ApplicationEvent;
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.User;
 
 
 public class OnRegistrationCompleteEvent extends ApplicationEvent implements EmailEvents {

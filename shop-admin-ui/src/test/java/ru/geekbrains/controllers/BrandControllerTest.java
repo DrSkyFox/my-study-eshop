@@ -11,8 +11,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import ru.geekbrains.persist.model.Brand;
-import ru.geekbrains.persist.repositories.BrandRepository;
+import ru.geekbrains.persist.model.goods.Brand;
+import ru.geekbrains.persist.repositories.goods.BrandRepository;
 
 import java.util.Optional;
 

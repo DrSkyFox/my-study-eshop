@@ -1,4 +1,4 @@
-package ru.geekbrains.persist.model;
+package ru.geekbrains.persist.model.goods;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,11 +1,14 @@
-package ru.geekbrains.persist.model;
+package ru.geekbrains.persist.model.accounts;
 
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", indexes = {
+        @Index(columnList = "login", name = "l_index", unique = true),
+        @Index(columnList = "fullname", name = "fn_index")
+})
 public class User {
 
     @Id
@@ -32,6 +35,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "user_info")
+    private UserInfo userInfo;
 
     public User() {
     }

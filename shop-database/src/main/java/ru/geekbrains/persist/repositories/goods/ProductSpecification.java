@@ -1,7 +1,7 @@
-package ru.geekbrains.persist.repositories;
+package ru.geekbrains.persist.repositories.goods;
 
 import org.springframework.data.jpa.domain.Specification;
-import ru.geekbrains.persist.model.Product;
+import ru.geekbrains.persist.model.goods.Product;
 
 import javax.persistence.criteria.JoinType;
 

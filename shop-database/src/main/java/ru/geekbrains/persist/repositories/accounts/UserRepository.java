@@ -1,7 +1,7 @@
-package ru.geekbrains.persist.repositories;
+package ru.geekbrains.persist.repositories.accounts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.User;
 
 import java.util.List;
 import java.util.Optional;

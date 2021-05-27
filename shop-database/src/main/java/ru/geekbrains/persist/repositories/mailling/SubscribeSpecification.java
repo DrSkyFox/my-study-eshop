@@ -1,7 +1,7 @@
-package ru.geekbrains.persist.repositories;
+package ru.geekbrains.persist.repositories.mailling;
 
 import org.springframework.data.jpa.domain.Specification;
-import ru.geekbrains.persist.model.Subscribe;
+import ru.geekbrains.persist.model.mailing.Subscribe;
 
 public final class SubscribeSpecification {
 

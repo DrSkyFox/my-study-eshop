@@ -10,12 +10,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
-import ru.geekbrains.persist.model.Brand;
-import ru.geekbrains.persist.model.Category;
-import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repositories.BrandRepository;
-import ru.geekbrains.persist.repositories.CategoryRepository;
-import ru.geekbrains.persist.repositories.ProductRepository;
+import ru.geekbrains.persist.model.goods.Brand;
+import ru.geekbrains.persist.model.goods.Category;
+import ru.geekbrains.persist.model.goods.Product;
+import ru.geekbrains.persist.repositories.goods.BrandRepository;
+import ru.geekbrains.persist.repositories.goods.CategoryRepository;
+import ru.geekbrains.persist.repositories.goods.ProductRepository;
 import ru.geekbrains.replication.ProductRepr;
 
 import java.math.BigDecimal;

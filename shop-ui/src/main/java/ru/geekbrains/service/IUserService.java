@@ -1,9 +1,9 @@
 package ru.geekbrains.service;
 
 import ru.geekbrains.exceptions.EmailExistsException;
-import ru.geekbrains.persist.model.PasswordResetToken;
-import ru.geekbrains.persist.model.User;
-import ru.geekbrains.persist.model.VerificationToken;
+import ru.geekbrains.persist.model.accounts.PasswordResetToken;
+import ru.geekbrains.persist.model.accounts.User;
+import ru.geekbrains.persist.model.accounts.VerificationToken;
 
 import java.util.Optional;
 

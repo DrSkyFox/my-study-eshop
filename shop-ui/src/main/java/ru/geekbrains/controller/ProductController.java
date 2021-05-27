@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.persist.repositories.CategoryRepository;
+import ru.geekbrains.persist.repositories.goods.CategoryRepository;
 import ru.geekbrains.service.ProductService;
 
 @Controller

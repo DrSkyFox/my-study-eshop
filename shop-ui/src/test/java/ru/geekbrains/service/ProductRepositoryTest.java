@@ -3,10 +3,10 @@ package ru.geekbrains.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ru.geekbrains.persist.model.Brand;
-import ru.geekbrains.persist.model.Category;
-import ru.geekbrains.persist.model.Product;
-import ru.geekbrains.persist.repositories.ProductRepository;
+import ru.geekbrains.persist.model.goods.Brand;
+import ru.geekbrains.persist.model.goods.Category;
+import ru.geekbrains.persist.model.goods.Product;
+import ru.geekbrains.persist.repositories.goods.ProductRepository;
 import ru.geekbrains.replication.ProductRepr;
 
 
