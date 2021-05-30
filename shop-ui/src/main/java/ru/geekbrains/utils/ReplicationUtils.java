@@ -1,6 +1,6 @@
 package ru.geekbrains.utils;
 
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.User;
 import ru.geekbrains.replication.UserRepr;
 
 public class ReplicationUtils {

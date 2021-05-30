@@ -2,8 +2,8 @@ package ru.geekbrains.replication;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ru.geekbrains.persist.model.Role;
-import ru.geekbrains.persist.model.User;
+import ru.geekbrains.persist.model.accounts.Role;
+import ru.geekbrains.persist.model.accounts.User;
 
 
 import javax.validation.constraints.Email;

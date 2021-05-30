@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.geekbrains.controllers.repr.UserRepr;
 import ru.geekbrains.error.NotFoundException;
-import ru.geekbrains.persist.repositories.RoleRepository;
+import ru.geekbrains.persist.repositories.accounts.RoleRepository;
 import ru.geekbrains.service.UserService;
 
 import javax.validation.Valid;

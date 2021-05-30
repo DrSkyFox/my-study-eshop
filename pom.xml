@@ -42,6 +42,7 @@
         <module>shop-picture-service</module>
         <module>shop-mailsend</module>
         <module>rabbit-mq-messanger</module>
+        <module>shop-phoneservice</module>
     </modules>
 
 </project>

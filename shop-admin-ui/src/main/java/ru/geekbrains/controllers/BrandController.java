@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.geekbrains.error.NotFoundException;
-import ru.geekbrains.persist.model.Brand;
-import ru.geekbrains.persist.repositories.BrandRepository;
+import ru.geekbrains.persist.model.goods.Brand;
+import ru.geekbrains.persist.repositories.goods.BrandRepository;
 
 @Controller
 public class BrandController {

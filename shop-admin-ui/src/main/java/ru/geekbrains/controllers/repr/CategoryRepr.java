@@ -1,6 +1,6 @@
 package ru.geekbrains.controllers.repr;
 
-import ru.geekbrains.persist.model.Category;
+import ru.geekbrains.persist.model.goods.Category;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
