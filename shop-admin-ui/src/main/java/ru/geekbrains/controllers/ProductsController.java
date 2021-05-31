@@ -79,9 +79,7 @@ public class ProductsController {
 
     @PostMapping("/product")
     public String adminUpsertProduct(Model model, RedirectAttributes redirectAttributes, ProductRepr product) {
-
         model.addAttribute("activePage", "Products");
-
         try {
             productService.save(product);
             logger.info("Product {} saved", product.toString());
