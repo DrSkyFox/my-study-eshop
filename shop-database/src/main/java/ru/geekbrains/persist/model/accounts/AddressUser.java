@@ -25,6 +25,13 @@ public class AddressUser {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "isprimary")
+    private Boolean isPrimary;
+
+    @Column(name = "isactive")
+    private Boolean isActive;
+
+
     public AddressUser(UserInfo userInfo, Country country, String city, String address) {
         this.userInfo = userInfo;
         this.country = country;
@@ -73,5 +80,18 @@ public class AddressUser {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "AddressUser{" +
+                "id=" + id +
+                ", userInfo=" + userInfo +
+                ", country=" + country +
+                ", city='" + city + '\'' +
+                ", address='" + address + '\'' +
+                ", isPrimary=" + isPrimary +
+                ", isActive=" + isActive +
+                '}';
     }
 }

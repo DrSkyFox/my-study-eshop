@@ -9,7 +9,7 @@ import ru.geekbrains.replication.ProductRepr;
 import ru.geekbrains.persist.model.goods.Picture;
 import ru.geekbrains.persist.model.goods.Product;
 import ru.geekbrains.persist.repositories.goods.ProductRepository;
-import ru.geekbrains.persist.repositories.goods.ProductSpecification;
+import ru.geekbrains.persist.specifications.ProductSpecification;
 
 import java.util.List;
 import java.util.Optional;

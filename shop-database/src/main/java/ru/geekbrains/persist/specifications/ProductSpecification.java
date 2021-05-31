@@ -1,4 +1,4 @@
-package ru.geekbrains.persist.repositories.goods;
+package ru.geekbrains.persist.specifications;
 
 import org.springframework.data.jpa.domain.Specification;
 import ru.geekbrains.persist.model.goods.Product;

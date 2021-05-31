@@ -1,4 +1,4 @@
-package ru.geekbrains.persist.repositories.accounts;
+package ru.geekbrains.persist.specifications;
 
 import org.springframework.data.jpa.domain.Specification;
 import ru.geekbrains.persist.model.accounts.User;
@@ -22,5 +22,8 @@ public final class UserSpecification {
             return criteriaBuilder.isTrue(criteriaBuilder.literal(true));
         };
     }
+
+
+
 
 }

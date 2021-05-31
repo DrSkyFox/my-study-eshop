@@ -16,7 +16,6 @@ public class UserInfo {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-
     @Column(name = "firstname")
     private String firstName;
 
@@ -24,18 +23,21 @@ public class UserInfo {
     private String secondName;
 
     @Column(name = "fullname")
-    private String fullname;
+    private String fullName;
 
     @OneToMany(
             mappedBy = "address_id",
             cascade = CascadeType.ALL)
     private List<AddressUser> addressUserList;
 
-    public UserInfo(User user, String firstName, String secondName, String fullname, List<AddressUser> addressUserList) {
+    @Column(name = "isactive")
+    private Boolean isActive;
+
+    public UserInfo(User user, String firstName, String secondName, String fullName, List<AddressUser> addressUserList) {
         this.user = user;
         this.firstName = firstName;
         this.secondName = secondName;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.addressUserList = addressUserList;
     }
 
@@ -74,12 +76,12 @@ public class UserInfo {
         this.secondName = secondName;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullNname(String fullname) {
+        this.fullName = fullname;
     }
 
     public List<AddressUser> getAddressUserList() {
@@ -88,5 +90,18 @@ public class UserInfo {
 
     public void setAddressUserList(List<AddressUser> addressUserList) {
         this.addressUserList = addressUserList;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id=" + id +
+                ", user=" + user +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", addressUserList=" + addressUserList +
+                ", isActive=" + isActive +
+                '}';
     }
 }
