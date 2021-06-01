@@ -1,4 +1,4 @@
-package ru.geekbrains.controller;
+package ru.geekbrains.controller.account;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import ru.geekbrains.exceptions.NotFoundException;
 import ru.geekbrains.events.OnForgotPasswordEvent;
 import ru.geekbrains.events.OnRegistrationCompleteEvent;
 import ru.geekbrains.exceptions.EmailExistsException;
