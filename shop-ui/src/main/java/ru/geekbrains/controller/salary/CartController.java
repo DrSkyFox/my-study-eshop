@@ -1,4 +1,4 @@
-package ru.geekbrains.controller;
+package ru.geekbrains.controller.salary;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.events.NotFoundException;
 import ru.geekbrains.replication.CartItemRepr;
 import ru.geekbrains.replication.ProductRepr;
 import ru.geekbrains.service.CartService;

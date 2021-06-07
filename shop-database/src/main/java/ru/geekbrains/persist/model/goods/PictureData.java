@@ -3,6 +3,7 @@ package ru.geekbrains.persist.model.goods;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "pictures_data")
@@ -54,5 +55,14 @@ public class PictureData {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    @Override
+    public String toString() {
+        return "PictureData{" +
+                "id=" + id +
+                ", data=" + Arrays.toString(data) +
+                ", fileName='" + fileName + '\'' +
+                '}';
     }
 }

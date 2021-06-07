@@ -73,4 +73,15 @@ public class Picture {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", contentType='" + contentType + '\'' +
+                ", pictureData=" + pictureData +
+                ", product=" + product +
+                '}';
+    }
 }

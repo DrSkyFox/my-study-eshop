@@ -86,4 +86,16 @@ public class Product implements Serializable {
     public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", category=" + category +
+                ", brand=" + brand +
+                ", pictures=" + pictures +
+                '}';
+    }
 }

@@ -40,10 +40,13 @@ public class User {
     @JoinColumn(nullable = false, name = "user_info")
     private UserInfo userInfo;
 
+    @Column(name = "isactive")
+    private Boolean isActive;
+
     public User() {
     }
 
-    public User(String login, String password, String email, Boolean enabled, Calendar calendar, Set<Role> roles) {
+    public User(String login, String password, String email, Boolean enabled, Calendar calendar, Set<Role> role) {
         this.login = login;
         this.password = password;
         this.email = email;
@@ -58,7 +61,16 @@ public class User {
         this.email = email;
     }
 
-
+    public User(String login, String password, String email, Boolean enabled, Calendar calendar, Set<Role> roles, UserInfo userInfo) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.enabled = enabled;
+        this.calendar = calendar;
+        this.roles = roles;
+        this.userInfo = userInfo;
+        this.isActive = true;
+    }
 
     public Long getId() {
         return id;
@@ -116,6 +128,22 @@ public class User {
         this.calendar = calendar;
     }
 
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -127,4 +155,6 @@ public class User {
                 ", roles=" + roles +
                 '}';
     }
+
+
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.geekbrains.controllers.repr.ProductRepr;
 import ru.geekbrains.error.NotFoundException;
+import ru.geekbrains.persist.model.goods.Product;
 import ru.geekbrains.persist.repositories.goods.BrandRepository;
 import ru.geekbrains.persist.repositories.goods.CategoryRepository;
 import ru.geekbrains.service.ProductService;
@@ -45,6 +46,7 @@ public class ProductsController {
 
     @GetMapping("/product/{id}/edit")
     public String adminEditProduct(Model model, @PathVariable("id") Long id) {
+        logger.info("Edit product with id: {}", id);
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Products");
         model.addAttribute("product", productService.findById(id).orElseThrow(NotFoundException::new));
@@ -55,13 +57,18 @@ public class ProductsController {
 
     @DeleteMapping("/product/{id}/delete")
     public String adminDeleteProduct(Model model, @PathVariable("id") Long id) {
+        logger.info("Request delete product with id: {}", id);
         model.addAttribute("activePage", "Products");
+        logger.info("Check exists product with id: {}", id);
+        logger.info("Product found: ", productService.findById(id).orElseThrow(NotFoundException::new).toString());
         productService.deleteById(id);
+        logger.info("Product deleted");
         return "redirect:/products";
     }
 
     @GetMapping("/product/create")
     public String adminCreateProduct(Model model) {
+        logger.info("Request: create product");
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Products");
         model.addAttribute("product", new ProductRepr());
@@ -73,9 +80,9 @@ public class ProductsController {
     @PostMapping("/product")
     public String adminUpsertProduct(Model model, RedirectAttributes redirectAttributes, ProductRepr product) {
         model.addAttribute("activePage", "Products");
-
         try {
             productService.save(product);
+            logger.info("Product {} saved", product.toString());
         } catch (Exception ex) {
             logger.error("Problem with creating or updating product", ex);
             redirectAttributes.addFlashAttribute("error", true);
