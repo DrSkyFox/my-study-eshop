@@ -80,8 +80,8 @@ public class UserInfo {
         return fullName;
     }
 
-    public void setFullNname(String fullname) {
-        this.fullName = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public List<AddressUser> getAddressUserList() {

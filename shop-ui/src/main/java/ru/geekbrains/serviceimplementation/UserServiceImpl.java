@@ -65,7 +65,7 @@ public class UserServiceImpl implements IUserService {
         User checkUser = repository.findByEmail(user.getEmail()).orElse(null);
         logger.info("check exists user with email {} result: {}", user.getEmail(), checkUser.toString());
         if (checkUser != null && !user.getId().equals(checkUser.getId())) {
-            logger.info("Email {} not available", user.getEmail());
+            logger.warn("Email {} not available", user.getEmail());
             throw new EmailExistsException("Email not available.");
         }
         logger.info("Save Update");

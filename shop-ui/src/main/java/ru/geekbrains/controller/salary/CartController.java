@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.events.NotFoundException;
+
+import ru.geekbrains.exceptions.NotFoundException;
 import ru.geekbrains.replication.CartItemRepr;
 import ru.geekbrains.replication.ProductRepr;
 import ru.geekbrains.service.CartService;
