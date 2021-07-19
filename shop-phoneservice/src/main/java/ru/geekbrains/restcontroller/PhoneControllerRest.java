@@ -1,4 +1,4 @@
-package restcontroller;
+package ru.geekbrains.restcontroller;
 
 import org.springframework.web.bind.annotation.RestController;
 

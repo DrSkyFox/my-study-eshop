@@ -1,4 +1,4 @@
-package configuration;
+package ru.geekbrains.configuration;
 
 import org.springframework.context.annotation.Configuration;
 

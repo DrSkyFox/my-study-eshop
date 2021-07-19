@@ -1,4 +1,4 @@
-package controller;
+package ru.geekbrains.controller;
 
 
 import org.springframework.stereotype.Controller;

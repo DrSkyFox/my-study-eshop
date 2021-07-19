@@ -1,4 +1,4 @@
-package serviceimplementation;
+package ru.geekbrains.serviceimplementation;
 
 
 import org.springframework.stereotype.Service;
